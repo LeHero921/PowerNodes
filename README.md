@@ -1,7 +1,7 @@
 <h1><p style="text-align: center;">Power Nodes - Preview</p></h1>
-<div style="color: #FFB83d; text-align: center; font-size: 20px; font-weight: bold;">
+<h3 style="color: #FFB83d; text-align: center; font-size: 20px; font-weight: bold;">
 This version Power Nodes is a PREVIEW !
-</div>
+</h3>
 
 ---
 <p style="text-align: center; font-size: 28px; font-weight: bold;">
