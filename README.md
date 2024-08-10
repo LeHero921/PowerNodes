@@ -1,5 +1,5 @@
 <h1 align="center">Power Nodes - Preview</h1>
-<h3 style="color: #FFB83d; align: center; font-size: 20px; font-weight: bold;">
+<h3 style="color:#FFB83d";"text-align:center";"font-size: 20px";"font-weight: bold">
 This version Power Nodes is a PREVIEW !
 </h3>
 
