@@ -1,13 +1,15 @@
 <h1 align="center">Power Nodes - Preview</h1>
-<h3 style="color:#FFB83d;text-align:center;font-size: 20px;font-weight: bold">
+
+<img src="icons/PowerNodes_Icon.png"></img>
+
+<h4 align="center">
 This version Power Nodes is a PREVIEW !
-</h3>
+</h4>
 
 ---
-<p style="text-align: center; font-size: 28px; font-weight: bold;">
+<h4 style="text-align: center; font-size: 28px; font-weight: bold;">
 What is Power Nodes
-</p>
+</h4>
 
-<p style="font-size: 20px;">
-Power Nodes is a Designer friendly tool <br>
-</p>
+Power Nodes is a designer-friendly tool,
+designed to simplify prototyping and design workflows.
