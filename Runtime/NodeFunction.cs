@@ -2,6 +2,9 @@ using System;
 // using ChatGPT;
 
 
+/// <summary>
+/// To create a NodeFunction, make a new class inside your NodeBehaviour class and extend NodeFunction
+/// </summary>
 [Serializable]
 public class NodeFunction
 {
