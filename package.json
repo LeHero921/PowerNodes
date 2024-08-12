@@ -1,11 +1,8 @@
 {
     "name": "com.QuantuumStudios.PowerNodes",
-    "version": "1.0.0",
+    "version": "0.0.9",
     "displayName": "PowerNodes",
     "unity": "2022.3",
-    "dependencies": {
-      "com.QuantuumStudios.Common": "1.0.0"
-   },
     "author": {
       "name": "LeHero921",
       "url": "https://www.twitch.tv/LeHero921"
