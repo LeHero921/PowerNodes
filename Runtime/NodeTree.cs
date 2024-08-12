@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using QuantuumStudios.Common;
-using QuantuumStudios.PowerNodes;
+using QuantuumStudios.PowerNodes.api;
 
 [CreateAssetMenu(fileName = "New Node Tree", menuName = QS_Headers.Common_Create_Header + "/" + PowerNodes.ProjectHeader + "/Node Tree")]
 public class NodeTree : ScriptableObject
