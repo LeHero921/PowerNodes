@@ -1,5 +1,5 @@
 using QuantuumStudios.Common;
-using QuantuumStudios.PowerNodes;
+using QuantuumStudios.PowerNodes.api;
 using UnityEditor;
 using UnityEngine;
 

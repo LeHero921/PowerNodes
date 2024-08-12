@@ -19,7 +19,7 @@ namespace QuantuumStudios.Common
     }
 }
 
-namespace QuantuumStudios.PowerNodes
+namespace QuantuumStudios.PowerNodes.api
 {
     public class PowerNodes
     {
