@@ -3,23 +3,24 @@ using QuantuumStudios.PowerNodes;
 using UnityEditor;
 using UnityEngine;
 
-public class PowerNodesToolbarFunctions : MonoBehaviour
+public class PowerNodesToolbarFunctions : Editor
 {
     const string createHeader = QS_Headers.Common_Create_Header;
     const string prodjectHeader = PowerNodes.ProjectHeader;
 
-    // [MenuItem(createHeader + "/" + prodjectHeader + "/Node Behaviours/Update All Behaviour Functions")]
-    // public static void ExecuteControlFunctionUpdate()
-    // {
-    //     // Find all instances of NodeBehaviour in the scene
-    //     NodeBehaviour[] allNodeBehaviours = Resources.FindObjectsOfTypeAll<NodeBehaviour>();
+    private void OnValidate() {
+        CheckPowerNodesManager();
+    }
 
-    //     // Loop through each instance and call ControlFunctionUpdate
-    //     foreach (NodeBehaviour nodeBehaviour in allNodeBehaviours)
-    //     {
-    //         nodeBehaviour.ControlFunctionUpdate();
-    //     }
-        
-    //     Debug.Log("Completed execution of ControlFunctionUpdate on all NodeBehaviours.");
-    // }
+    [MenuItem(createHeader + "/" + prodjectHeader + "/Add PowerNodes Manager")]
+    public static void CheckPowerNodesManager()
+    {
+        if (FindObjectOfType<PowerNodesManager>() == null)
+        {
+            Instantiate(new GameObject().AddComponent<PowerNodesManager>());
+        }else
+        {
+            FindObjectOfType<PowerNodesManager>().gameObject.name = "PowerNodes Manager";
+        }
+    }
 }

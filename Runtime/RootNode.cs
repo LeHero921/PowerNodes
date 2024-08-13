@@ -8,5 +8,5 @@ public class RootNode : ScriptableObject
 {
     public string nodeName;
     public string nodeID;
-    public SystemNode[] compatibleSystems;
+    public List<SystemNode> compatibleSystems = new List<SystemNode>();
 }

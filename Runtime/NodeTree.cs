@@ -45,6 +45,11 @@ public class SystemNodeContainer
     public SystemNode containedSystemNode;
     public NodeBehaviour nodeBehaviour;
     public string nodeID;
+
+    // Node functions in here are going to be auto filled from system behaviour by the tree editor
+    public List<NodeFunction> OnNodeEnterNodes = new List<NodeFunction>();
+    public List<NodeFunction> OnExecutionNodes = new List<NodeFunction>();
+    public List<NodeFunction> OnNodeExitNodes  = new List<NodeFunction>();
 }
 
 }

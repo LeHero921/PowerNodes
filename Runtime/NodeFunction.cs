@@ -22,7 +22,7 @@ public class NodeFunction
     }
     
     /// <summary>
-    /// Use OnNodeExecute to link your code to the execution of this function
+    /// Use RunNodeFunction() to link your code to the execution of this function
     /// </summary>
     public virtual void RunNodeFunction()
     {

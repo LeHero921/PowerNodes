@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using QuantuumStudios.Common;
 using QuantuumStudios.PowerNodes;
 using UnityEngine;

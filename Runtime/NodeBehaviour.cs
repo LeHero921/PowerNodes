@@ -5,11 +5,9 @@ using UnityEngine;
 namespace QuantuumStudios.PowerNodes{
 
 /// <summary>
-/// Node Behaviour NEEDS list of NodeFunction and a dictionary with string, Action|
-/// use public override:
-/// -> OnNodeEnter()
-/// -> OnNodeExecution()
-/// -> OnNodeExit()
+/// Node Behaviour NEEDS list of NodeFunction and a dictionary with string, Action
+/// | implement all public override functions
+/// | implement PowerNodesAPI.UpdateNodeExecution +=/-= OnNodeExecution in OnEn/Disable
 /// </summary>
 public class NodeBehaviour : ScriptableObject
 {
@@ -42,11 +40,8 @@ public class NodeBehaviour : ScriptableObject
 
     /// <summary>
     /// On Node Execution runns code every frame
-    /// | args: bool run
-    /// | please implement: while(run){}
     /// </summary>
-    /// <param name="run"></param>
-    public virtual void OnNodeExecution(bool run)
+    public virtual void OnNodeExecution()
     {
         Debug.Log("Node is Executing! " + this.name);
     }

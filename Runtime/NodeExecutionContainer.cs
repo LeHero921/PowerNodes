@@ -23,14 +23,14 @@ public class NodeExecutionContainer : MonoBehaviour
     private void OnEnable() {
         if (pipelineStartType == PipelineStartType.OnLoadAllNodeEntities)
         {
-            PowerNodesAPI.NodeExecution.LoadAllNodeEntities += StartExecutionPipeline;
+            PowerNodesAPI.LoadAllNodeEntities += StartExecutionPipeline;
         }
     }
 
     private void OnDisable() {
         if (pipelineStartType == PipelineStartType.OnLoadAllNodeEntities)
         {
-            PowerNodesAPI.NodeExecution.LoadAllNodeEntities += StartExecutionPipeline;
+            PowerNodesAPI.LoadAllNodeEntities += StartExecutionPipeline;
         }
     }
     #endregion
@@ -74,7 +74,6 @@ public class NodeExecutionContainer : MonoBehaviour
         {
             // from here on out, the node can handle its logic on its own
             systemsContainer.containedSystemNode.nodeBehaviour.OnNodeEnter();
-            systemsContainer.containedSystemNode.nodeBehaviour.OnNodeExecution(true);
         }
     }
 
@@ -85,7 +84,7 @@ public class NodeExecutionContainer : MonoBehaviour
         foreach (SystemNodeContainer systemsContainer in nodeTree.rootNode.attatchedSystemNodes)
         {
             // from here on out, the node can handle its logic on its own
-            systemsContainer.containedSystemNode.nodeBehaviour.OnNodeExecution(false);
+            systemsContainer.containedSystemNode.nodeBehaviour.OnNodeExecution();
             systemsContainer.containedSystemNode.nodeBehaviour.OnNodeExit();
         }
 
