@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using QuantuumStudios.Common;
-using QuantuumStudios.PowerNodes.api;
+
+namespace QuantuumStudios.PowerNodes{
 
 [CreateAssetMenu(fileName = "New Node Tree", menuName = QS_Headers.Common_Create_Header + "/" + PowerNodes.ProjectHeader + "/Node Tree")]
 public class NodeTree : ScriptableObject
@@ -44,4 +45,6 @@ public class SystemNodeContainer
     public SystemNode containedSystemNode;
     public NodeBehaviour nodeBehaviour;
     public string nodeID;
+}
+
 }

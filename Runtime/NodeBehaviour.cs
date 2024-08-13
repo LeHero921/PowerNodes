@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using System.Reflection;
-using System.Linq;
 using System;
 using UnityEngine;
 
+namespace QuantuumStudios.PowerNodes{
+
 /// <summary>
-/// Node Behaviour NEEDS list of NodeFunction ;
+/// Node Behaviour NEEDS list of NodeFunction and a dictionary with string, Action|
 /// use public override:
 /// -> OnNodeEnter()
 /// -> OnNodeExecution()
@@ -13,48 +13,22 @@ using UnityEngine;
 /// </summary>
 public class NodeBehaviour : ScriptableObject
 {
-    #region Magic Code finding other code
-
-    protected NodeBehaviour()
-    {
-        RegisterNodeFunctions(new List<NodeFunction>());
-    }
-
-    // Diese Methode sucht nach allen NodeFunction-Klassen und fügt sie zur Liste hinzu
-    public virtual void RegisterNodeFunctions(List<NodeFunction> functions)
-    {
-        var nodeFunctionTypes = GetType().GetNestedTypes(BindingFlags.Public | BindingFlags.NonPublic)
-            .Where(t => t.IsSubclassOf(typeof(NodeFunction)) && !t.IsAbstract)
-            .ToArray();
-
-        foreach (var type in nodeFunctionTypes)
-        {
-            var nodeFunctionInstance = (NodeFunction)Activator.CreateInstance(type, new object[] { this });
-            if (nodeFunctionInstance.NodeInfo.NodeName == "" || nodeFunctionInstance.NodeInfo.NodeId == "")
-            {
-                Debug.LogWarning("You forgot to set either NodeInfo.NodeName or .NodeID for: " + nodeFunctionInstance);
-                break;
-            }
-            else if (functions.Find(NodeFunction => NodeFunction.NodeInfo.NodeId == nodeFunctionInstance.NodeInfo.NodeId) == null)
-            {
-                Debug.Log("Is Function already in list?: " + functions.Find(NodeFunction => NodeFunction.NodeInfo.NodeId == nodeFunctionInstance.NodeInfo.NodeId));
-                Debug.Log("Adding node function: " + nodeFunctionInstance.NodeInfo.NodeName);
-                functions.Add(nodeFunctionInstance);
-            }
-        }
-    }
-    #endregion
-
     #region Pipeline Functions
     /// <summary>
-    /// Control Function Update is REQUIRED to be used!
-    /// just do: RegisterNodeFunctions(yourListHere);
-    /// inside the override!
+    /// implement this in your custom Node Behaviour class to invoke your System functions
     /// </summary>
-    public virtual void ControlFunctionUpdate()
+    /// <param name="funcDict"></param>
+    /// <param name="methodName"></param>
+    public virtual void InvokeMethodByName(Dictionary<string, Action> funcDict, string methodName)
     {
-        List<NodeFunction> tempList = new List<NodeFunction>();
-        RegisterNodeFunctions(tempList);
+        if (funcDict.TryGetValue(methodName, out Action method))
+        {
+            method.Invoke();
+        }
+        else
+        {
+            Debug.LogWarning($"Method {methodName} not found");
+        }
     }
 
     /// <summary>
@@ -68,8 +42,11 @@ public class NodeBehaviour : ScriptableObject
 
     /// <summary>
     /// On Node Execution runns code every frame
+    /// | args: bool run
+    /// | please implement: while(run){}
     /// </summary>
-    public virtual void OnNodeExecution()
+    /// <param name="run"></param>
+    public virtual void OnNodeExecution(bool run)
     {
         Debug.Log("Node is Executing! " + this.name);
     }
@@ -82,5 +59,16 @@ public class NodeBehaviour : ScriptableObject
         Debug.Log("Node Execution stopped! " + this.name);
         // Continue to next Node
     }
+
+    /// <summary>
+    /// Use StartCoroutine(functionName) inside this function
+    /// | Make sure to type the function name correctly!
+    /// </summary>
+    /// <param name="functionName"></param>
+    public virtual void RunFunctionByName(string functionName)
+    {
+    }
     #endregion
+}
+
 }

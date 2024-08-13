@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class PowerNodesAPI : MonoBehaviour
 {
-    public class NodeExecution
+    public static class NodeExecution
     {
         public static UnityAction LoadAllNodeEntities;
         public static UnityAction<RootNode> LoadAllNodeEntitiesOfType;
@@ -19,7 +19,7 @@ namespace QuantuumStudios.Common
     }
 }
 
-namespace QuantuumStudios.PowerNodes.api
+namespace QuantuumStudios.PowerNodes
 {
     public class PowerNodes
     {

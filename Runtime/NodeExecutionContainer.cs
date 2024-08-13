@@ -1,6 +1,6 @@
-using System;
-using System.Collections;
 using UnityEngine;
+
+namespace QuantuumStudios.PowerNodes{
 
 /// <summary>
 /// The Node Execution Container is the place where
@@ -74,6 +74,7 @@ public class NodeExecutionContainer : MonoBehaviour
         {
             // from here on out, the node can handle its logic on its own
             systemsContainer.containedSystemNode.nodeBehaviour.OnNodeEnter();
+            systemsContainer.containedSystemNode.nodeBehaviour.OnNodeExecution(true);
         }
     }
 
@@ -81,8 +82,16 @@ public class NodeExecutionContainer : MonoBehaviour
     {
         runPipeline = false;
         inPipeline = false;
+        foreach (SystemNodeContainer systemsContainer in nodeTree.rootNode.attatchedSystemNodes)
+        {
+            // from here on out, the node can handle its logic on its own
+            systemsContainer.containedSystemNode.nodeBehaviour.OnNodeExecution(false);
+            systemsContainer.containedSystemNode.nodeBehaviour.OnNodeExit();
+        }
 
         Debug.Log("Stopping Node Pipeline execution for: " + gameObject.name + "!");
     }
     #endregion
+}
+
 }

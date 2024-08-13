@@ -1,20 +1,32 @@
 using System;
+using UnityEngine;
 // using ChatGPT;
 
-
+namespace QuantuumStudios.PowerNodes{
 /// <summary>
 /// To create a NodeFunction, make a new class inside your NodeBehaviour class and extend NodeFunction
+/// | Make constructor public! |
+/// Please override RunNodeFunction!
 /// </summary>
 [Serializable]
 public class NodeFunction
 {
-    public NodeInfo NodeInfo { get; private set; }
-    protected NodeBehaviour ParentBehaviour { get; private set; }
+    public NodeInfo NodeInfo;
+    public string executionMethodName;
+    public bool allowExecution = false;
+    // protected NodeBehaviour ParentBehaviour { get; private set; }
 
-    protected NodeFunction(NodeBehaviour parent)
+    protected NodeFunction()
     {
-        ParentBehaviour = parent;
         NodeInfo = new NodeInfo { NodeName = GetType().Name, NodeId = Guid.NewGuid().ToString() };
+    }
+    
+    /// <summary>
+    /// Use OnNodeExecute to link your code to the execution of this function
+    /// </summary>
+    public virtual void RunNodeFunction()
+    {
+
     }
 }
 
@@ -37,4 +49,6 @@ public class NodeInfo
         NodeName = "Unnamed Node";
         NodeId = Guid.NewGuid().ToString();
     }
+}
+
 }
