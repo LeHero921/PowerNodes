@@ -24,8 +24,11 @@ public class PowerNodesManager : MonoBehaviour
 
     private void Update() {
         // TODO: make some optimizing logic
-
-        PowerNodesAPI.UpdateNodeExecution();
+        try
+        {
+            PowerNodesAPI.UpdateNodeExecution();
+        }
+        catch{}
     }
 }
 
